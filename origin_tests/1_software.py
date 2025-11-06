@@ -1,7 +1,9 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import sync_playwright, expect
 
-def test_progeo_navigation(page: Page):
-   
+with sync_playwright() as playwright:
+    browser = playwright.chromium.launch(headless=False)
+    page = browser.new_page()
+
     # Открываем страницу progeo.expert
     page.goto('https://progeo.expert/')
     page.wait_for_timeout(3000)
