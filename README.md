@@ -28,12 +28,12 @@ progeo-playwright-tests/
 │
 ├── tests/ # Тесты Playwright
 │ ├── ready/ # Готовые тесты
-│ └── conftest.py # Фикстуры и обработка артефактов
-│
 ├── artifacts/ # Скриншоты, видео, логи
 ├── run_tests.ps1 # Скрипт для запуска тестов и Allure отчёта
 ├── requirements.txt # Список зависимостей
-└── README.md # Этот файл
+├── conftest.py # Фикстуры и обработка артефактов
+├── pytest.ini 
+├── README.md # Этот файл
 ```
 
 ## Установка и запуск
