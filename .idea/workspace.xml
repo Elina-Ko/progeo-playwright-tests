@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfc8392-83b4-4a25-b6b1-a8f6cd1d9fb2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_01_open_progeo_network.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_04_auth_valid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_05_auth_invalid_port.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_06_auth_invalid_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_07_auth_invalid_password.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_08_auth_invalid_credentials.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_09_auth_invalid_login_password.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_10_auth_invalid_port_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ready/test_11_auth_invalid_port_password.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ready_temp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ready" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
