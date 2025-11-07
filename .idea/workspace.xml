@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfc8392-83b4-4a25-b6b1-a8f6cd1d9fb2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ProGeo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProGeo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/3_lk_progeo_expert.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/4_auth_valid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/5_auth_invalid_port.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/6_auth_invalid _login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/7_auth_invalid_password.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ready/allure-results/6ebaefce-354d-4516-90eb-fa2ecbfb378a-container.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ready/allure-results/6eda909b-a885-4d7e-af0b-06c4f3dceea4-attachment.webm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ready/allure-results/a521b9f6-38e9-4cab-b9de-ee2db27bd2e2-container.json" beforeDir="false" />
@@ -24,8 +17,6 @@
       <change beforePath="$PROJECT_DIR$/tests/ready/test_01_open_progeo_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ready/test_01_open_progeo_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ready/test_02_open_tutorial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ready/test_03_lk_progeo_expert.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_progeo_web.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_software.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
