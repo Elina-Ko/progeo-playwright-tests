@@ -1,5 +1,6 @@
 param(
-    [switch]$Slow
+    [switch]$Slow,
+    [string]$TestPath = "tests"   # ← новый параметр
 )
 
 # ======================================
@@ -46,7 +47,7 @@ Start-Sleep -Seconds 1
 # ======================================
 Write-Host "🚀 Запускаем тесты Playwright..." -ForegroundColor Green
 
-pytest --alluredir=allure-results --disable-warnings -v
+pytest $TestPath --alluredir=allure-results --disable-warnings -v
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Все тесты успешно завершены!" -ForegroundColor Green
