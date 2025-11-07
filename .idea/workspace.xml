@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfc8392-83b4-4a25-b6b1-a8f6cd1d9fb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_01_open_progeo_network.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_04_auth_valid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_05_auth_invalid_port.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_06_auth_invalid_login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_07_auth_invalid_password.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_08_auth_invalid_credentials.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_09_auth_invalid_login_password.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_10_auth_invalid_port_login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ready/test_11_auth_invalid_port_password.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ready_temp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ready" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_01_open_progeo_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_01_open_progeo_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_02_open_tutorial.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_02_open_tutorial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_03_lk_progeo_expert.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_03_lk_progeo_expert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_04_auth_valid.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_04_auth_valid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_05_auth_invalid_port.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_05_auth_invalid_port.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_06_auth_invalid_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_06_auth_invalid_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_07_auth_invalid_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_07_auth_invalid_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_08_auth_invalid_credentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_08_auth_invalid_credentials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_09_auth_invalid_login_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_09_auth_invalid_login_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_10_auth_invalid_port_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_10_auth_invalid_port_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_11_auth_invalid_port_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/origin_scripts/test_11_auth_invalid_port_password.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,12 +71,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\ProGeo_UI_autotests_playwright\origin_scripts" />
       <recent name="C:\Users\user\PycharmProjects\ProGeo_UI_autotests_playwright\origin_tests" />
       <recent name="C:\Users\user\PycharmProjects\ProGeo" />
       <recent name="C:\Users\user\PycharmProjects\ProGeo\ProGeo_UI_autotests_playwright" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for test_03_lk_progeo_expert.test_03_lk_progeo_expert">
+  <component name="RunManager">
     <configuration name="2_progeo_web" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ProGeo" />
       <option name="ENV_FILES" value="" />
@@ -120,7 +122,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_01_open_progeo_network.test_01_open_progeo_network" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for origin_scripts.test_01_open_progeo_network.test_01_open_progeo_network" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="ProGeo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,11 +135,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_01_open_progeo_network.test_01_open_progeo_network&quot;" />
+      <option name="_new_target" value="&quot;origin_scripts.test_01_open_progeo_network.test_01_open_progeo_network&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_02_open_tutorial.test_02_tutorial" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for origin_scripts.test_02_open_tutorial.test_02_tutorial" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="ProGeo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,11 +152,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_02_open_tutorial.test_02_tutorial&quot;" />
+      <option name="_new_target" value="&quot;origin_scripts.test_02_open_tutorial.test_02_tutorial&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_03_lk_progeo_expert.test_03_lk_progeo_expert" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for origin_scripts.test_03_lk_progeo_expert.test_03_lk_progeo_expert" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="ProGeo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,15 +169,15 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_03_lk_progeo_expert.test_03_lk_progeo_expert&quot;" />
+      <option name="_new_target" value="&quot;origin_scripts.test_03_lk_progeo_expert.test_03_lk_progeo_expert&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_03_lk_progeo_expert.test_03_lk_progeo_expert" />
-        <item itemvalue="Python tests.pytest for test_01_open_progeo_network.test_01_open_progeo_network" />
-        <item itemvalue="Python tests.pytest for test_02_open_tutorial.test_02_tutorial" />
+        <item itemvalue="Python tests.pytest for origin_scripts.test_03_lk_progeo_expert.test_03_lk_progeo_expert" />
+        <item itemvalue="Python tests.pytest for origin_scripts.test_01_open_progeo_network.test_01_open_progeo_network" />
+        <item itemvalue="Python tests.pytest for origin_scripts.test_02_open_tutorial.test_02_tutorial" />
         <item itemvalue="Python.2_progeo_web" />
         <item itemvalue="Python.auth_invalid_port_password" />
       </list>
