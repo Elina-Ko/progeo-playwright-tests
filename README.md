@@ -25,15 +25,15 @@
 ## Структура проекта
 ```bash
 progeo-playwright-tests/
-│
-├── tests/ # Тесты Playwright
-│ ├── ready/ # Готовые тесты
-├── artifacts/ # Скриншоты, видео, логи
-├── run_tests.ps1 # Скрипт для запуска тестов и Allure отчёта
-├── requirements.txt # Список зависимостей
-├── conftest.py # Фикстуры и обработка артефактов
-├── pytest.ini 
-├── README.md # Этот файл
+├── origin_scripts 
+├── origin_tests 
+├── tests/ # Тесты Playwright 
+├── .gitignore #
+├── run_tests.ps1 # Скрипт для запуска тестов и Allure отчёта 
+├── conftest.py # Фикстуры и обработка артефактов 
+├── pytest.ini #
+├── requirements.txt # Зависимости
+├── README.md 
 ```
 
 ## Установка и запуск
