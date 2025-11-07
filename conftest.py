@@ -1,102 +1,113 @@
-import pytest
-from playwright.sync_api import sync_playwright
-from datetime import datetime
 import os
 import time
+import pytest
 import allure
+from datetime import datetime
+from playwright.sync_api import sync_playwright
 
 
-# --- 1️⃣ хук: сохраняет статус теста ---
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    rep = outcome.get_result()
-    setattr(item, "rep_" + rep.when, rep)
-    return rep
-
-
-# --- 2️⃣ создаём браузер ---
 @pytest.fixture(scope="session")
 def browser():
+    """Создаёт браузер с поддержкой slow_mo (если задано через переменную окружения)."""
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=500)
+        slow_mo = int(os.getenv("PLAYWRIGHT_SLOWMO", "0"))  # 🐢 задержка между действиями
+        headless = os.getenv("HEADLESS", "false").lower() == "true"
+
+        browser = p.chromium.launch(headless=headless, slow_mo=slow_mo)
         yield browser
         browser.close()
 
 
-# --- 3️⃣ создаём страницу ---
 @pytest.fixture()
 def page(browser, request):
+    """Создаёт страницу, записывает видео, логи, скриншоты и прикрепляет их к Allure."""
     test_name = request.node.name.replace("/", "_")
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    artifacts_dir = "artifacts"
-    os.makedirs(f"{artifacts_dir}/videos", exist_ok=True)
-    os.makedirs(f"{artifacts_dir}/logs", exist_ok=True)
-    os.makedirs(f"{artifacts_dir}/screenshots", exist_ok=True)
+    os.makedirs("artifacts/videos", exist_ok=True)
+    os.makedirs("artifacts/logs", exist_ok=True)
+    os.makedirs("artifacts/screenshots", exist_ok=True)
 
     context = browser.new_context(
         viewport={"width": 1400, "height": 900},
-        record_video_dir=f"{artifacts_dir}/videos"
+        record_video_dir="artifacts/videos"
     )
     page = context.new_page()
 
-    # логирование консоли
-    log_path = f"{artifacts_dir}/logs/{test_name}_{timestamp}.log"
+    log_file_path = f"artifacts/logs/{test_name}_{timestamp}.log"
 
-    def log_console(msg):
-        with open(log_path, "a", encoding="utf-8") as f:
+    def log_console_message(msg):
+        with open(log_file_path, "a", encoding="utf-8") as f:
             f.write(f"[console] {msg.type.upper()}: {msg.text}\n")
 
-    page.on("console", log_console)
-    yield page
+    def log_request(request_event):
+        with open(log_file_path, "a", encoding="utf-8") as f:
+            f.write(f"[request] {request_event.method} {request_event.url}\n")
 
-    # после теста: закрываем контекст, ждём видео
-    context.close()
-    time.sleep(1)
+    def log_response(response):
+        with open(log_file_path, "a", encoding="utf-8") as f:
+            f.write(f"[response] {response.status} {response.url}\n")
 
-    # сохраняем последнее видео
+    page.on("console", log_console_message)
+    page.on("request", log_request)
+    page.on("response", log_response)
+
+    yield page  # 🧪 здесь выполняется тест
+
+    # Ждём, чтобы Playwright успел записать видео
+    time.sleep(1.2)
+
     video_path = None
     try:
+        # Закрываем контекст и ждём завершения видео
+        context.close()
+        time.sleep(1.0)
+
+        # Находим последнее записанное видео
+        video_dir = os.path.join("artifacts", "videos")
         videos = sorted(
-            [os.path.join(f"{artifacts_dir}/videos", f) for f in os.listdir(f"{artifacts_dir}/videos")],
+            [os.path.join(video_dir, f) for f in os.listdir(video_dir)],
             key=os.path.getmtime,
             reverse=True
         )
+
         if videos:
-            original = videos[0]
-            video_path = f"{artifacts_dir}/videos/{test_name}_{timestamp}.webm"
-            os.rename(original, video_path)
+            original_path = videos[0]
+            new_video_name = f"{test_name}_{timestamp}.webm"
+            new_video_path = os.path.join(video_dir, new_video_name)
+            os.rename(original_path, new_video_path)
+            video_path = new_video_path
             print(f"🎥 Видео сохранено: {video_path}")
+
+            # === Превью ===
+            try:
+                import imageio.v3 as iio
+                from PIL import Image
+                frames = list(iio.imiter(video_path))
+                mid_frame = frames[len(frames) // 2]
+                preview_path = os.path.join(video_dir, f"{test_name}_{timestamp}_preview.png")
+                Image.fromarray(mid_frame).save(preview_path)
+                allure.attach.file(preview_path, name="🖼️ Превью", attachment_type=allure.attachment_type.PNG)
+                print(f"🖼️ Превью создано: {preview_path}")
+            except Exception as e:
+                print(f"⚠️ Не удалось создать превью: {e}")
+
     except Exception as e:
-        print(f"⚠️ Видео не найдено: {e}")
+        print(f"⚠️ Ошибка при сохранении видео: {e}")
 
-    # сохраняем пути для последующего прикрепления
-    request.node.video_path = video_path
-    request.node.log_path = log_path
-    request.node.screenshot_path = f"{artifacts_dir}/screenshots/{test_name}_{timestamp}.png"
-    request.node.page = page
-
-
-# --- 4️⃣ прикрепляем всё в отчёт ---
-@pytest.hookimpl(trylast=True)
-def pytest_runtest_teardown(item, nextitem):
-    """Добавляем вложения, когда тест уже завершён и Allure в контексте."""
-    if not hasattr(item, "rep_call"):
-        return
-
-    # логи
-    if hasattr(item, "log_path") and os.path.exists(item.log_path):
-        allure.attach.file(item.log_path, name="📄 Логи", attachment_type=allure.attachment_type.TEXT)
-
-    # видео
-    if hasattr(item, "video_path") and item.video_path and os.path.exists(item.video_path):
-        allure.attach.file(item.video_path, name="🎥 Видео", attachment_type=allure.attachment_type.WEBM)
-
-    # скриншот, если тест упал
-    if item.rep_call.failed and hasattr(item, "page"):
+    # === Скриншот при падении ===
+    if hasattr(request.node, "rep_call") and request.node.rep_call.failed:
+        screenshot_path = f"artifacts/screenshots/{test_name}_{timestamp}.png"
         try:
-            item.page.screenshot(path=item.screenshot_path, full_page=True)
-            allure.attach.file(item.screenshot_path, name="📸 Скриншот", attachment_type=allure.attachment_type.PNG)
+            page.screenshot(path=screenshot_path, full_page=True)
+            allure.attach.file(screenshot_path, name="📸 Скриншот", attachment_type=allure.attachment_type.PNG)
+            print(f"📸 Скриншот сохранён: {screenshot_path}")
         except Exception as e:
             print(f"⚠️ Не удалось сделать скриншот: {e}")
+
+    # === Логи и видео ===
+    if os.path.exists(log_file_path):
+        allure.attach.file(log_file_path, name="📄 Логи", attachment_type=allure.attachment_type.TEXT)
+    if video_path and os.path.exists(video_path):
+        print(f"📎 Прикрепляем видео в Allure: {video_path}")
+        allure.attach.file(video_path, name="🎥 Видео", attachment_type=allure.attachment_type.WEBM)
