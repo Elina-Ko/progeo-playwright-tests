@@ -24,9 +24,7 @@
 
 ## Структура проекта
 ```bash
-progeo-playwright-tests/
-├── origin_scripts 
-├── origin_tests 
+progeo-playwright-tests/ 
 ├── tests/ # Тесты Playwright 
 ├── .gitignore #
 ├── run_tests.ps1 # Скрипт для запуска тестов и Allure отчёта 
